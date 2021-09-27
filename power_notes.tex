@@ -492,7 +492,7 @@ These loads are the electrical equivalents of a hose or balloon filled with pres
 \autoimage{power_factor_07}{Reactive load showing current lagging voltage (Wikipedia)}{power-factor-07}
 
 Let $P$ be the real power, and $Q$ be the reactive power.
-The imaginary unit $j$ is such that $j^2=-1$.
+The imaginary unit $j$ is such that $j^2=-1 \Rightarrow j=\sqrt{-1}$.
 (Some textbooks, including leaving cert maths use $i$ as the imaginary unit, but it is prone to confusion with $i$ meaning current.)
 We define the apparent power $S$ by:
 \begin{align}
@@ -507,6 +507,10 @@ The apparent power for sizing purposes of a UPS is then simply the magnitude, $ 
   \left \lvert S \right \rvert & = \sqrt{P^2+Q^2}   
 \end{align}
 
+We can also re-arrange this to give the real, $P$, and reactive, $Q$, power components: 
+\begin{align}
+  \left \lvert P \right \rvert ^2 & = \sqrt{ \left \lvert S^2 \right \rvert - Q^2 } \\
+  \left \lvert Q \right \rvert ^2 & = \sqrt{ \left \lvert S^2 \right \rvert - P^2 } \\
 \subsubsection{Power factor}
 \label{sec:power-factor}
 
@@ -515,10 +519,10 @@ Assuming we know $P$ and $Q$, the angle $\theta$ is simply:
 \begin{align}
   \theta = \tan^{-1} \frac{Q}{P} 
 \end{align}
-We normally consider not the angle $\theta$, but the cosine of it.
-This gives us the ratio of real power to apparent power, and it is called the \textbf{power factor}: 
+We normally consider not the angle $\theta$, but the cosine of it, $\cos \theta$.
+This gives us the ratio of real power to apparent power, and it is called the \textbf{power factor}, $PF$: 
 \begin{align}
-  \cos \theta & = \frac{P}{\left \lvert S \right \rvert}
+  PF & = \frac{P}{\left \lvert S \right \rvert}
 \end{align}
 In terms of its interpretation:
 \begin{itemize}
@@ -550,9 +554,9 @@ If you have the voltage and amps \textbf{directly} specified for a particular pi
 
 If you have the power drawn by the device in watts, and you know the power factor, determine $\left \lvert S \right \rvert$ by calculating:
 \begin{align}
-   \left \lvert S_{\mbox{device}} \right \rvert & = \frac{P}{\cos \theta }
+   \left \lvert S_{\mbox{device}} \right \rvert & = \frac{P}{PF }
 \end{align}
-If you're not given a power factor, $\cos \theta = 0.8$ will usually work, but state that assumption.
+If you're not given a power factor, $PF = 0.8$ will usually work, but state that assumption.
 
 \begin{example}{VA calculation from power}{va-calculation-from-power}
   The specification sheet for a server shows that it consumes up to \SI{250}{\watt}.
@@ -560,7 +564,7 @@ If you're not given a power factor, $\cos \theta = 0.8$ will usually work, but s
   \tcblower
   Given the information we have, we will assume a power factor of 0.8.
   \begin{align}
-    \left \lvert S \right \rvert & = \frac{P}{\cos \theta} \\
+    \left \lvert S \right \rvert & = \frac{P}{PF} \\
                                  & = \frac{250}{0.8} \\
                                  & = \SI{312.5}{\volt\ampere}
   \end{align}
